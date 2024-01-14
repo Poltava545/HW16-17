@@ -1,0 +1,1412 @@
+{
+	"info": {
+		"_postman_id": "cd787105-30fb-49b4-91e2-d4d9d3578c31",
+		"name": "HW14",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23428133",
+		"_collection_link": "https://red-capsule-74922.postman.co/workspace/QApro-test-~3dda30f9-83aa-43f1-a01a-80d50e333cbe/collection/23428133-cd787105-30fb-49b4-91e2-d4d9d3578c31?action=share&source=collection_link&creator=23428133"
+	},
+	"item": [
+		{
+			"name": "validation sigup",
+			"item": [
+				{
+					"name": "validation",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const csvData = pm.iterationData.toObject();\r",
+									"pm.environment.set(\"name\", csvData.name);\r",
+									"pm.environment.set(\"lastName\", csvData.lastName);\r",
+									"pm.environment.set(\"email\", csvData.email);\r",
+									"pm.environment.set(\"password\", csvData.password);\r",
+									"pm.environment.set(\"repeatPassword\", csvData.repeatPassword);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"{{name}}\",\r\n  \"lastName\": \"{{lastName}}\",\r\n  \"email\": \"{{email}}\",\r\n  \"password\": \"{{password}}\",\r\n  \"repeatPassword\": \"{{repeatPassword}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/signup",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Valid registration",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n    \"name\": \"{{$randomFirstName}}\",\r\n    \"lastName\": \"{{$randomLastName}}\",\r\n    \"email\": \"{{randomEmail}}\",\r\n    \"password\": \"{{randomPassword}}\",\r\n    \"repeatPassword\": \"{{registeredPassword}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/auth/signup",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 11 Dec 2023 16:10:49 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "112"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"70-wrpOnGvv+L1eQ13JktdIN+mDXKE\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "sid=s%3AlsU8f7SMzcS32PRXGzpjlufl8CYhIXSL.pvkj1STB6RC53Dhtbx3YmlTBZ2kSlMNb3le8%2FZWKsGE; Domain=.forstudy.space; Path=/; Expires=Tue, 12 Dec 2023 16:10:49 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"ok\",\n    \"data\": {\n        \"userId\": 67672,\n        \"photoFilename\": \"default-user.png\",\n        \"distanceUnits\": \"km\",\n        \"currency\": \"usd\"\n    }\n}"
+						},
+						{
+							"name": "invalid name",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n    \"name\": \"{{$randomFirstName}}\",\r\n    \"lastName\": \"{{$randomLastName}}\",\r\n    \"email\": \"{{randomEmail}}\",\r\n    \"password\": \"{{randomPassword}}\",\r\n    \"repeatPassword\": \"{{registeredPassword}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/auth/signup",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 11 Dec 2023 16:10:49 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "112"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"70-wrpOnGvv+L1eQ13JktdIN+mDXKE\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "sid=s%3AlsU8f7SMzcS32PRXGzpjlufl8CYhIXSL.pvkj1STB6RC53Dhtbx3YmlTBZ2kSlMNb3le8%2FZWKsGE; Domain=.forstudy.space; Path=/; Expires=Tue, 12 Dec 2023 16:10:49 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"ok\",\n    \"data\": {\n        \"userId\": 67672,\n        \"photoFilename\": \"default-user.png\",\n        \"distanceUnits\": \"km\",\n        \"currency\": \"usd\"\n    }\n}"
+						},
+						{
+							"name": "invalid name 2",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n    \"name\": \"{{$randomFirstName}}\",\r\n    \"lastName\": \"{{$randomLastName}}\",\r\n    \"email\": \"{{randomEmail}}\",\r\n    \"password\": \"{{randomPassword}}\",\r\n    \"repeatPassword\": \"{{registeredPassword}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/auth/signup",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 11 Dec 2023 16:10:49 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "112"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"70-wrpOnGvv+L1eQ13JktdIN+mDXKE\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "sid=s%3AlsU8f7SMzcS32PRXGzpjlufl8CYhIXSL.pvkj1STB6RC53Dhtbx3YmlTBZ2kSlMNb3le8%2FZWKsGE; Domain=.forstudy.space; Path=/; Expires=Tue, 12 Dec 2023 16:10:49 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"ok\",\n    \"data\": {\n        \"userId\": 67672,\n        \"photoFilename\": \"default-user.png\",\n        \"distanceUnits\": \"km\",\n        \"currency\": \"usd\"\n    }\n}"
+						},
+						{
+							"name": "invalid lastname",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n    \"name\": \"{{$randomFirstName}}\",\r\n    \"lastName\": \"{{$randomLastName}}\",\r\n    \"email\": \"{{randomEmail}}\",\r\n    \"password\": \"{{randomPassword}}\",\r\n    \"repeatPassword\": \"{{registeredPassword}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/auth/signup",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 11 Dec 2023 16:10:49 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "112"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"70-wrpOnGvv+L1eQ13JktdIN+mDXKE\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "sid=s%3AlsU8f7SMzcS32PRXGzpjlufl8CYhIXSL.pvkj1STB6RC53Dhtbx3YmlTBZ2kSlMNb3le8%2FZWKsGE; Domain=.forstudy.space; Path=/; Expires=Tue, 12 Dec 2023 16:10:49 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"ok\",\n    \"data\": {\n        \"userId\": 67672,\n        \"photoFilename\": \"default-user.png\",\n        \"distanceUnits\": \"km\",\n        \"currency\": \"usd\"\n    }\n}"
+						},
+						{
+							"name": "invalid Email",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n    \"name\": \"{{$randomFirstName}}\",\r\n    \"lastName\": \"{{$randomLastName}}\",\r\n    \"email\": \"{{randomEmail}}\",\r\n    \"password\": \"{{randomPassword}}\",\r\n    \"repeatPassword\": \"{{registeredPassword}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/auth/signup",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 11 Dec 2023 16:10:49 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "112"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"70-wrpOnGvv+L1eQ13JktdIN+mDXKE\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "sid=s%3AlsU8f7SMzcS32PRXGzpjlufl8CYhIXSL.pvkj1STB6RC53Dhtbx3YmlTBZ2kSlMNb3le8%2FZWKsGE; Domain=.forstudy.space; Path=/; Expires=Tue, 12 Dec 2023 16:10:49 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"ok\",\n    \"data\": {\n        \"userId\": 67672,\n        \"photoFilename\": \"default-user.png\",\n        \"distanceUnits\": \"km\",\n        \"currency\": \"usd\"\n    }\n}"
+						},
+						{
+							"name": "Valid registration Copy",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n    \"name\": \"{{$randomFirstName}}\",\r\n    \"lastName\": \"{{$randomLastName}}\",\r\n    \"email\": \"{{randomEmail}}\",\r\n    \"password\": \"\",\r\n    \"repeatPassword\": \"{{registeredPassword}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/auth/signup",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 11 Dec 2023 16:10:49 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "112"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"70-wrpOnGvv+L1eQ13JktdIN+mDXKE\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "sid=s%3AlsU8f7SMzcS32PRXGzpjlufl8CYhIXSL.pvkj1STB6RC53Dhtbx3YmlTBZ2kSlMNb3le8%2FZWKsGE; Domain=.forstudy.space; Path=/; Expires=Tue, 12 Dec 2023 16:10:49 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"ok\",\n    \"data\": {\n        \"userId\": 67672,\n        \"photoFilename\": \"default-user.png\",\n        \"distanceUnits\": \"km\",\n        \"currency\": \"usd\"\n    }\n}"
+						},
+						{
+							"name": "invalid repeatPassword",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n    \"name\": \"{{$randomFirstName}}\",\r\n    \"lastName\": \"{{$randomLastName}}\",\r\n    \"email\": \"{{randomEmail}}\",\r\n    \"password\": \"{{randomPassword}}\",\r\n    \"repeatPassword\": \"{{registeredPassword}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/auth/signup",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 11 Dec 2023 16:10:49 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "112"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"70-wrpOnGvv+L1eQ13JktdIN+mDXKE\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "sid=s%3AlsU8f7SMzcS32PRXGzpjlufl8CYhIXSL.pvkj1STB6RC53Dhtbx3YmlTBZ2kSlMNb3le8%2FZWKsGE; Domain=.forstudy.space; Path=/; Expires=Tue, 12 Dec 2023 16:10:49 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"ok\",\n    \"data\": {\n        \"userId\": 67672,\n        \"photoFilename\": \"default-user.png\",\n        \"distanceUnits\": \"km\",\n        \"currency\": \"usd\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "signup",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var schema = {\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"status\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"data\": {\r",
+							"      \"type\": \"object\",\r",
+							"      \"properties\": {\r",
+							"        \"userId\": {\r",
+							"          \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"photoFilename\": {\r",
+							"          \"type\": \"string\"\r",
+							"        },\r",
+							"        \"distanceUnits\": {\r",
+							"          \"type\": \"string\"\r",
+							"        },\r",
+							"        \"currency\": {\r",
+							"          \"type\": \"string\"\r",
+							"        }\r",
+							"      },\r",
+							"      \"required\": [\r",
+							"        \"userId\",\r",
+							"        \"photoFilename\",\r",
+							"        \"distanceUnits\",\r",
+							"        \"currency\"\r",
+							"      ]\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"status\",\r",
+							"    \"data\"\r",
+							"  ]\r",
+							"}\r",
+							"pm.test(\"Response status code is 201\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(201);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response has the required fields - status and data\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    pm.expect(responseData).to.have.property('status');\r",
+							"    pm.expect(responseData).to.have.property('data');\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"UserId is a non-negative integer\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.data.userId).to.be.a('number').and.to.be.at.least(0);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"PhotoFilename is a non-empty string\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.data.photoFilename).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"DistanceUnits and currency are in a valid format\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.data.distanceUnits).to.be.a('string');\r",
+							"    pm.expect(responseData.data.currency).to.be.a('string');\r",
+							"});\r",
+							"\r",
+							"// Отримайте відповідь\r",
+							"const responseData = pm.response.json();\r",
+							"\r",
+							"// Отримайте значення id\r",
+							"const userId = responseData.data.userId;\r",
+							"\r",
+							"// Збережіть userId у змінну середовища\r",
+							"pm.environment.set(\"userId\", userId);\r",
+							"\r",
+							"// Виведіть userId у консоль для перевірки\r",
+							"console.log(\"User ID:\", userId);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const randomFirstName = pm.variables.replaceIn(\"{{$randomFirstName}}\"); //рандомне імя \r",
+							"const randomLastName = pm.variables.replaceIn(\"{{$randomLastName}}\"); //рандомне прізвище \r",
+							"const randomEmail = pm.variables.replaceIn(\"{{$randomEmail}}\"); //рандомний емейл \r",
+							"\r",
+							"const passwordLength = 10; //довжина паролю \r",
+							"\r",
+							"//генерація рандомного пароля\r",
+							"function generateRandomPassword(length) {\r",
+							"    const charset = \"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\";\r",
+							"    let password = '';\r",
+							"    for (let i = 0; i < length; i++) {\r",
+							"        const randomIndex = Math.floor(Math.random() * charset.length);\r",
+							"        password += charset[randomIndex];\r",
+							"    }\r",
+							"    return password;\r",
+							"}\r",
+							"const randomPassword = generateRandomPassword(passwordLength);\r",
+							"\r",
+							"\r",
+							"pm.environment.set(\"randomFirstName\", randomFirstName);\r",
+							"pm.environment.set(\"randomLastName\", randomLastName);\r",
+							"pm.environment.set(\"randomEmail\", randomEmail);\r",
+							"pm.environment.set(\"registeredEmail\", randomEmail);\r",
+							"pm.environment.set('randomPassword', randomPassword);\r",
+							"pm.environment.set(\"registeredPassword\", randomPassword);\r",
+							"\r",
+							"\r",
+							"console.log(\"Random Email for Login:\", randomEmail);\r",
+							"console.log(`Random Email: ${randomEmail}`);\r",
+							"console.log(`Registered Email: ${pm.environment.get(\"registeredEmail\")}`);\r",
+							"console.log('Random Password:', randomPassword);\r",
+							"console.log(`Registered Password: ${pm.environment.get(\"registeredPassword\")}`);\r",
+							"\r",
+							"\r",
+							"\r",
+							"// Скрипт для валідації електронної пошти\r",
+							"let emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\r",
+							"if (!emailRegex.test(randomEmail)) {\r",
+							"    pm.environment.set(\"signupError\", \"Invalid email format\");\r",
+							"}\r",
+							"\r",
+							"// Скрипт для перевірки довжини пароля\r",
+							"let minLength = 8;\r",
+							"if (randomPassword.length < minLength) {\r",
+							"    pm.environment.set(\"signupError\", \"Password must be at least 8 characters long\");\r",
+							"}\r",
+							"\r",
+							"// Скрипт для перевірки унікальності електронної пошти (припустимо, що у вас є масив existingEmails)\r",
+							"let existingEmails = [\"user1@example.com\", \"user2@example.com\"];\r",
+							"if (existingEmails.includes(randomEmail)) {\r",
+							"    pm.environment.set(\"signupError\", \"Email already registered\");\r",
+							"}\r",
+							"\r",
+							"// Скрипт для перевірки збігу паролів\r",
+							"if (pm.environment.get(\"registeredPassword\") !== randomPassword) {\r",
+							"    pm.environment.set(\"signupError\", \"Passwords do not match\");\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n    \"name\": \"{{$randomFirstName}}\",\r\n    \"lastName\": \"{{$randomLastName}}\",\r\n    \"email\": \"{{randomEmail}}\",\r\n    \"password\": \"{{randomPassword}}\",\r\n    \"repeatPassword\": \"{{registeredPassword}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/auth/signup",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "change  users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Отримайте відповідь\r",
+							"const responseData = pm.response.json();\r",
+							"\r",
+							"// Отримайте значення userId\r",
+							"const userId = responseData.data.userId;\r",
+							"\r",
+							"// Збережіть userId у змінну середовища\r",
+							"pm.environment.set(\"userId\", userId);\r",
+							"\r",
+							"// Виведіть userId у консоль для перевірки\r",
+							"console.log(\"User ID:\", userId);\r",
+							"\r",
+							"// Очікувана відповідь\r",
+							"const expectedResponse = {\r",
+							"  status: 'ok',\r",
+							"  data: {\r",
+							"    userId: userId, // використовуємо збережену userId\r",
+							"    photoFilename: 'default-user.png',\r",
+							"    name: 'John',\r",
+							"    lastName: 'Dou',\r",
+							"    dateBirth: responseData.data.dateBirth, // використовуємо dateBirth з відповіді сервера\r",
+							"    country: 'Ukraine'\r",
+							"  }\r",
+							"};\r",
+							"\r",
+							"// Перевірка, що відповідь має очікуваний статус\r",
+							"pm.test(\"Response status is 'ok'\", function () {\r",
+							"  pm.expect(responseData.status).to.eql(expectedResponse.status);\r",
+							"});\r",
+							"\r",
+							"// Перевірка всіх властивостей даних відповіді\r",
+							"pm.test(\"Response data matches the expected data\", function () {\r",
+							"  pm.expect(responseData.data).to.deep.eql(expectedResponse.data);\r",
+							"});\r",
+							"\r",
+							"// Окрема перевірка для dateBirth\r",
+							"pm.test(\"Date of birth has the correct format\", function () {\r",
+							"  pm.expect(expectedResponse.data.dateBirth).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{3}Z$/); // Перевірка формату\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"  pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify that status field is a non-empty string\", function () {\r",
+							"  pm.expect(responseData.status).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Status should not be empty\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"UserId matches the stored userId from environment variables\", function () {\r",
+							"  pm.expect(responseData.data.userId).to.equal(userId);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Photo filename is set to 'default-user.png'\", function () {\r",
+							"  pm.expect(responseData.data.photoFilename).to.equal('default-user.png');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"photo\": \"user-1621352948859.jpg\",\r\n  \"name\": \"John\",\r\n  \"lastName\": \"Dou\",\r\n  \"dateBirth\": \"2021-03-17T15:21:05.000Z\",\r\n  \"country\": \"Ukraine\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/users/profile",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"users",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "password change",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Отримання тіла відповіді\r",
+							"var responseBody = pm.response.json();\r",
+							"\r",
+							"// Перевірка наявності ключа \"data\" та \"userId\" у відповіді\r",
+							"pm.test(\"Response has data and userId\", function () {\r",
+							"    pm.expect(responseBody).to.have.property(\"data\");\r",
+							"    pm.expect(responseBody.data).to.have.property(\"userId\");\r",
+							"});\r",
+							"\r",
+							"// Перевірка значення userId\r",
+							"pm.test(\"Check userId value\", function () {\r",
+							"    // Задайте очікуване значення userId\r",
+							"    var expectedUserId = pm.variables.get(\"userId\");\r",
+							"\r",
+							"    // Отримання фактичного значення userId з відповіді\r",
+							"    var actualUserId = responseBody.data.userId;\r",
+							"\r",
+							"    // Перевірка, чи фактичне значення відповідає очікуваному\r",
+							"    pm.expect(actualUserId).to.equal(expectedUserId);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"oldPassword\": \"{{randomPassword}}\",\r\n  \"password\": \"FooBar12345\",\r\n  \"repeatPassword\": \"FooBar12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/users/password",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"users",
+						"password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Отримання тіла відповіді\r",
+							"var responseBody = pm.response.json();\r",
+							"\r",
+							"// Перевірка наявності ключа \"status\" у відповіді\r",
+							"pm.test(\"Response has status key\", function () {\r",
+							"    pm.expect(responseBody).to.have.property(\"status\");\r",
+							"});\r",
+							"\r",
+							"// Перевірка значення ключа \"status\"\r",
+							"pm.test(\"Check status value\", function () {\r",
+							"    // Задайте очікуване значення для ключа \"status\"\r",
+							"    var expectedStatus = \"ok\";\r",
+							"\r",
+							"    // Отримання фактичного значення ключа \"status\" з відповіді\r",
+							"    var actualStatus = responseBody.status;\r",
+							"\r",
+							"    // Перевірка, чи фактичне значення відповідає очікуваному\r",
+							"    pm.expect(actualStatus).to.equal(expectedStatus);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/auth/logout",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Отримання тіла відповіді\r",
+							"var responseBody = pm.response.json();\r",
+							"\r",
+							"// Перевірка наявності ключа \"data\" та \"userId\" у відповіді\r",
+							"pm.test(\"Response has data and userId\", function () {\r",
+							"    pm.expect(responseBody).to.have.property(\"data\");\r",
+							"    pm.expect(responseBody.data).to.have.property(\"userId\");\r",
+							"});\r",
+							"\r",
+							"// Перевірка значення userId\r",
+							"pm.test(\"Check userId value\", function () {\r",
+							"    // Задайте очікуване значення userId\r",
+							"    var expectedUserId = pm.variables.get(\"userId\");\r",
+							"\r",
+							"    // Отримання фактичного значення userId з відповіді\r",
+							"    var actualUserId = responseBody.data.userId;\r",
+							"\r",
+							"    // Перевірка, чи фактичне значення відповідає очікуваному\r",
+							"    pm.expect(actualUserId).to.equal(expectedUserId);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"\r",
+							"console.log(\"Login Request Body:\", request.data);\r",
+							"console.log(`Registered Email: ${pm.environment.get(\"registeredEmail\")}`);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"{{registeredEmail}}\",\r\n  \"password\": \"FooBar12345\",\r\n  \"remember\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/auth/signin",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user profile data",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var schema = {\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"status\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"data\": {\r",
+							"      \"type\": \"object\",\r",
+							"      \"properties\": {\r",
+							"        \"userId\": {\r",
+							"          \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"photoFilename\": {\r",
+							"          \"type\": \"string\"\r",
+							"        },\r",
+							"        \"name\": {\r",
+							"          \"type\": \"string\"\r",
+							"        },\r",
+							"        \"lastName\": {\r",
+							"          \"type\": \"string\"\r",
+							"        }\r",
+							"      },\r",
+							"      \"required\": [\r",
+							"        \"userId\",\r",
+							"        \"photoFilename\",\r",
+							"        \"name\",\r",
+							"        \"lastName\"\r",
+							"      ]\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"status\",\r",
+							"    \"data\"\r",
+							"  ]\r",
+							"}\r",
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"  pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response has the required fields\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    pm.expect(responseData.status).to.exist;\r",
+							"    pm.expect(responseData.data).to.exist;\r",
+							"    pm.expect(responseData.data.userId).to.exist;\r",
+							"    pm.expect(responseData.data.photoFilename).to.exist;\r",
+							"    pm.expect(responseData.data.name).to.exist;\r",
+							"    pm.expect(responseData.data.lastName).to.exist;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status is a non-empty string\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData).to.be.an('object');\r",
+							"  pm.expect(responseData.status).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Status should not be empty\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"PhotoFilename is in a valid format\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.have.property('data');\r",
+							"    pm.expect(responseData.data).to.have.property('photoFilename').that.is.a('string').and.match(/\\.(png|jpg|jpeg|gif)$/);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Name and lastName must be non-empty strings\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData).to.be.an('object');\r",
+							"  pm.expect(responseData.data.name).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Name should not be empty\");\r",
+							"  pm.expect(responseData.data.lastName).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Last name should not be empty\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/users/profile",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"users",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "new cars",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var schema = {\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"status\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"data\": {\r",
+							"      \"type\": \"object\",\r",
+							"      \"properties\": {\r",
+							"        \"id\": { \"type\": \"integer\" },\r",
+							"        \"carBrandId\": { \"type\": \"integer\" },\r",
+							"        \"carModelId\": { \"type\": \"integer\" },\r",
+							"        \"initialMileage\": { \"type\": \"integer\", \"minimum\": 0 },\r",
+							"        \"updatedMileageAt\": { \"type\": \"string\" },\r",
+							"        \"carCreatedAt\": { \"type\": \"string\" },\r",
+							"        \"mileage\": { \"type\": \"integer\" },\r",
+							"        \"brand\": { \"type\": \"string\" },\r",
+							"        \"model\": { \"type\": \"string\" },\r",
+							"        \"logo\": { \"type\": \"string\" }\r",
+							"      },\r",
+							"      \"required\": [\r",
+							"        \"id\",\r",
+							"        \"carBrandId\",\r",
+							"        \"carModelId\",\r",
+							"        \"initialMileage\",\r",
+							"        \"updatedMileageAt\",\r",
+							"        \"carCreatedAt\",\r",
+							"        \"mileage\",\r",
+							"        \"brand\",\r",
+							"        \"model\",\r",
+							"        \"logo\"\r",
+							"      ]\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\"status\", \"data\"]\r",
+							"};\r",
+							"\r",
+							"pm.test(\"Response status code is 201\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required fields - status and data\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    pm.expect(responseData).to.be.an('object').and.to.have.all.keys('status', 'data');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Initial mileage is a non-negative integer\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  pm.expect(responseData.data.initialMileage).to.be.a('number').and.to.be.at.least(0);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"CarCreatedAt is in a valid date format (YYYY-MM-DD or ISO 8601)\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  pm.expect(responseData.data.carCreatedAt).to.match(/^\\d{4}-\\d{2}-\\d{2}(T\\d{2}:\\d{2}:\\d{2}.\\d{3}Z)?$/);\r",
+							"});\r",
+							"// Отримайте відповідь\r",
+							"const responseData = pm.response.json();\r",
+							"// Отримайте значення id\r",
+							"const carId = responseData.data.id;\r",
+							"// Збережіть carId у змінну середовища\r",
+							"pm.environment.set(\"carId\", carId);\r",
+							"// Виведіть id у консоль для перевірки\r",
+							"console.log(\"Car ID:\", carId);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"carBrandId\": 1,\r\n  \"carModelId\": 2,\r\n  \"mileage\": 60\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/cars",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "new expenses",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Отримайте відповідь\r",
+							"const responseData = pm.response.json();\r",
+							"\r",
+							"// Перевірте чи існує поле \"data\" в відповіді\r",
+							"pm.test(\"Response contains data field\", function () {\r",
+							"    pm.expect(responseData).to.have.property('data');\r",
+							"\r",
+							"    // Якщо \"data\" присутнє і статус не є \"error\", можна виконати додаткові перевірки або отримати значення \"id\"\r",
+							"    if (responseData.data && responseData.status !== 'error') {\r",
+							"        const Id = responseData.data.id;\r",
+							"\r",
+							"        // Збережіть Id у змінну середовища\r",
+							"        pm.environment.set(\"Id\", Id);\r",
+							"\r",
+							"        // Виведіть Id у консоль для перевірки\r",
+							"        console.log(\"ID:\", Id);\r",
+							"    } else {\r",
+							"        // Обробка випадку, коли \"data\" відсутнє або статус \"error\"\r",
+							"        console.log(\"ID is undefined or response status is error\");\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Генеруємо поточну дату у форматі \"YYYY-MM-DD\"\r",
+							"const currentDate = new Date().toISOString().split('T')[0];\r",
+							"\r",
+							"// Зберігаємо поточну дату у змінну середовища\r",
+							"pm.environment.set(\"currentDate\", currentDate);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"carId\": \"{{carId}}\",\r\n  \"reportedAt\": \"{{currentDate}}\",\r\n  \"mileage\": 111,\r\n  \"liters\": 11,\r\n  \"totalCost\": 11,\r\n  \"forceMileage\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/expenses",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"expenses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "change expenses",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"carId\": {{carId}},\r\n  \"reportedAt\": \"{{currentDate}}\",\r\n  \"mileage\": 55555,\r\n  \"liters\": 555,\r\n  \"totalCost\": 555,\r\n  \"forceMileage\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/expenses/{{Id}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"expenses",
+						"{{Id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Users",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/users",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
